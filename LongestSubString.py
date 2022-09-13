@@ -1,4 +1,4 @@
-def solution(s):
+def naive_solution(s):
     if s =="":
                 
         return 0
@@ -22,4 +22,40 @@ def solution(s):
             
     return len(longest)
 
-print(solution(""))
+def sliding_window(s):
+    if s=="":
+        return 0
+    if s==" ":
+        return 1
+    l=r=0
+    dict={}
+    temp=""
+    longest=""
+    while r <= len(s)-1:
+        if s[r] not in dict:
+            dict[s[r]]=r
+            r=r+1
+            temp=s[l:r]
+        else:
+                temp=s[l:r-1]
+                if len(temp)>len(longest):
+                    longest=temp
+                l=dict[s[r]]+1
+                dict[s[r]]=r
+        if len(longest)<len(temp):
+            longest=temp
+    print(dict)
+    return len(longest)
+print(sliding_window("abcc"))
+
+
+
+
+
+
+
+
+
+
+
+
