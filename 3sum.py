@@ -1,36 +1,30 @@
 from multiprocessing.dummy import Array
 
 
-def threeSum( nums):
-        
-        #making the coupled summation array
-        couple=[]
-        result=[]
-        for i in range(0,len(nums)-1):
-                   
-            couple.append(nums[i]+nums[i+1])
-        print("couple",couple)
-        
-        #making the results
-        for i in range(0,len(nums)):
-            summation=0
-            if i ==0:
-                for j in range(1,len(couple)):
-                    print("i0",j)
-                    summation=nums[0]+couple[j]
-                    if summation ==0:
-                        result.append([nums[0],nums[j],nums[j+1]])
-
+def threeSum(nums):
+    result=[]
+    nums.sort()
+    
+    for i,a in enumerate(nums):
+        print(i)
+        if i>0 and a==nums[i-1]:
+             continue
+        l,r =i+1,len(nums)-1
+        while l<r:
+            threesum=a+nums[l]+nums[r]
+            if threesum>0:
+                r-=1
+            elif threesum<0:
+                l+=1
             else:
-                for j in range(0,len(couple)):
-                    if j!=i and j!=i-1:
-                        print("1other",j)
-                        summation=nums[i]+couple[j]
-                        if summation==0:
-                            result.append([nums[i],nums[j],nums[j+1]])
-        return result
+                result.append([a,nums[l],nums[r]])
+                l+=1
+                while nums[l]==nums[l-1] and l<r:#same value
+                    l+=1
 
+    return result
+                        
             
           
 
-print(threeSum([1,0,-1]))
+print(threeSum([-1,0,1,2,-1,-4]))
