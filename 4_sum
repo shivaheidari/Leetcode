@@ -1,0 +1,33 @@
+def four_Sum(nums):
+
+    result=[]
+    if nums==[]:
+            return Null
+    nums_sorted=nums.sort()
+    print(nums_sorted)
+    #print(nums)
+    for i in range(0,len(nums)):
+      for j in range(i+1,len(nums)):
+                print(nums_sorted[i])
+                two_sum=nums_sorted[i]+nums_sorted[j]
+                if two_sum<target:
+                    left=j+1
+                    right=len(nums)
+                    print(left)
+                    print(right)
+                    if left<right:
+                        four_sum=two_sum+nums_sorted[left]+nums_sorted[right]
+                        if four_sum<target:
+                            left+=1
+                            four_sum=0
+
+                        if four_sum>target:
+                            right-=1
+                            four_sum=0
+                        if  four_sum==target:
+                            result.append([nums_sorted[i],nums_sorted[j],nums_sorted[left],nums_sorted[right]])
+                            four_sum=0
+                two_sum=0
+    return result
+
+print(four_Sum[0,-1,2,-1])
