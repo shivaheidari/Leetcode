@@ -1,5 +1,4 @@
 def four_Sum(nums):
-
     result=[]
     if nums==[]:
             return Null
