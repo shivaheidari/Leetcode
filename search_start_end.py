@@ -4,7 +4,6 @@ def find_st(nums,target):
         if nums==0 or target=="":
             
             return [start,end]
-        
         head=0
         tail=len(nums)
         while start==-1 and 0<=head<tail<len(nums):

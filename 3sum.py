@@ -6,7 +6,6 @@ def threeSum(nums):
     nums.sort()
     
     for i,a in enumerate(nums):
-        print(i)
         if i>0 and a==nums[i-1]:
              continue
         l,r =i+1,len(nums)-1
