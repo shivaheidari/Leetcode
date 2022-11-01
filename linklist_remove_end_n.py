@@ -14,7 +14,7 @@ def removeNthFromEnd(head, n):
         if head.next.next==None:
             new_h=head
             
-        new_h=reverse_l(head.next.next,head.next)
+        new_h=reverse_l(head.next)
         #delete
         i=0
         temp=new_h
@@ -44,6 +44,7 @@ def reverse_l(head):
     if head.next:
         newhead=reverse_l(head.next)
         head.next.next=head
+        head.next=None
     return newhead
        
         
@@ -56,12 +57,18 @@ def print_l(head):
 head=ListNode()
 n1=ListNode()
 n2=ListNode()
+n3=ListNode()
 n1.val=2
 n1.next=n2
 n2.val=3
-n2.next=None
+n2.next=n3
+n3.val=4
+n3.next=None
 head=n1
-print(head)
+print_l(head)
+head=removeNthFromEnd(head,1)
+# head=reverse_l(head)
+print_l(head)
 
 # removeNthFromEnd(head,1)      
     
