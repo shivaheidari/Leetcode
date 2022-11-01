@@ -1,5 +1,6 @@
 # Definition for singly-linked list.
 from html.entities import name2codepoint
+from urllib.request import HTTPDigestAuthHandler
 
 
 class ListNode:
@@ -7,7 +8,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-def removeNthFromEnd( head, n):
+def removeNthFromEnd(head, n):
         #reverse
         #only one node
         if head.next.next==None:
@@ -36,15 +37,21 @@ def removeNthFromEnd( head, n):
         return head
 
 
-def reverse_l(node,prev):
-        if node==None:
-            head=prev
-            return head
+def reverse_l(head):
+    if not head:
+        return None
+    newhead=head
+    if head.next:
+        newhead=reverse_l(head.next)
+        head.next.next=head
+    return newhead
+       
         
-        else:
-            reverse_l(node,node.next)
-            node.next=prev
-        
+def print_l(head):
+    while(head):
+        print(head.val)
+        head=head.next
+
 
 head=ListNode()
 n1=ListNode()
@@ -53,7 +60,8 @@ n1.val=2
 n1.next=n2
 n2.val=3
 n2.next=None
-head.val=None
-head.next=n1
-removeNthFromEnd(head,1)      
+head=n1
+print(head)
+
+# removeNthFromEnd(head,1)      
     
