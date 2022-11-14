@@ -69,6 +69,5 @@ print_l(head)
 head=removeNthFromEnd(head,1)
 # head=reverse_l(head)
 print_l(head)
-
 # removeNthFromEnd(head,1)      
     
