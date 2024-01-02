@@ -2,7 +2,7 @@
 # out put : k: the umber of elements which are not equal to val
 # inplace : yes
 
-def removeElement(num_list, val):
+def removeElement_twopointers(num_list, val):
     k = 0
     i=0
     j = len(num_list)-1
@@ -18,8 +18,12 @@ def removeElement(num_list, val):
         k += 1   
     print(num_list)
     return k
-   
+
+
 num_list = [3,4,3,1,2,3]
 val = 3
 
-print(removeElement(num_list, val))
+
+
+
+#print(removeElement(num_list, val))
