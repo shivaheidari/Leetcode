@@ -90,8 +90,3 @@ class Hashtable_linkedlist:
             current = current.next
         return None
             
-hash_table = Hashtable_linkedlist(5)
-hash_table.insert("a",1)
-hash_table.insert("b",2)
-print(hash_table.delete("b"))
-print(hash_table.search("a"))
