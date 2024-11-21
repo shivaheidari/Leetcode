@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Hashtable_list:
     def __init__(self,size):
         self.size = size
@@ -43,7 +46,7 @@ class Hashtable_linkedlist:
         self.table = [None]*size 
 
     def hash(self,key):
-        pass
+        return hash(key)%self.size
 
     def insert(self,key,value):
         index = self.hash(key)
@@ -51,21 +54,44 @@ class Hashtable_linkedlist:
             self.table[index] = Node(key,value)
         else:
             current = self.table[index]
-            while current.next:
+            while current:
                 if current.key == key:
                     current.value = value
                     return
+                
                 if not current.next:
                     break
                 current = current.next
-            current.next = Node(key,value)
-
-    def delete(self,key):
-        
             
+            current.next = Node(key, value)
+            
+    def delete(self,key):
+        index = self.hash(key)
+        current = self.table[index]
+        prev = None
 
-hash_table = Hashtable_list(5)
+        while current:
+            if current.key == key:
+                if prev:
+                    prev.next = current.next
+                else:
+                    self.table[index] = current.next
+                return True
+            prev = current
+            current = current.next
+        return False
+
+    def search(self,key):
+        index = self.hash(key)
+        current = self.table[index] 
+        while current:
+            if current.key == key:
+                return current.value
+            current = current.next
+        return None
+            
+hash_table = Hashtable_linkedlist(5)
 hash_table.insert("a",1)
 hash_table.insert("b",2)
-print(hash_table.delete("c"))
+print(hash_table.delete("b"))
 print(hash_table.search("a"))
