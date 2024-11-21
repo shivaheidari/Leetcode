@@ -42,6 +42,28 @@ class Hashtable_linkedlist:
         self.size = size
         self.table = [None]*size 
 
+    def hash(self,key):
+        pass
+
+    def insert(self,key,value):
+        index = self.hash(key)
+        if self.table[index] == None:
+            self.table[index] = Node(key,value)
+        else:
+            current = self.table[index]
+            while current.next:
+                if current.key == key:
+                    current.value = value
+                    return
+                if not current.next:
+                    break
+                current = current.next
+            current.next = Node(key,value)
+
+    def delete(self,key):
+        
+            
+
 hash_table = Hashtable_list(5)
 hash_table.insert("a",1)
 hash_table.insert("b",2)
