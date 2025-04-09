@@ -51,6 +51,29 @@ print(sliding_window("abcc"))
 
 
 
+"""
+Given a string s, find the length of the longest substring without repeating characters.
+"""
+def longest(s):
+    
+    #slidig window + hashing
+    left = 0 
+    right = 0
+    longest = 0
+
+    for i, ch in s:
+        seens = {}
+        if ch not in seens:
+            seens[ch] = i
+            longest = max(longest, right - left + 1)
+        else:
+            left = max (left, seens[ch] + 1)
+    return longest
+            
+            
+    
+
+
 
 
 
