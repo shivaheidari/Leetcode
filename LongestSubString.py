@@ -1,3 +1,5 @@
+import numpy as np
+
 def naive_solution(s):
     if s =="":
                 
@@ -46,7 +48,7 @@ def sliding_window(s):
             longest=temp
     print(dict)
     return len(longest)
-print(sliding_window("abcc"))
+
 
 
 
@@ -70,13 +72,64 @@ def longest(s):
             left = max (left, seens[ch] + 1)
     return longest
             
-            
+        
+"""
+ Longest Substring with At Most Two Distinct Characters
+
+"""
+
+def longest_two(s):
+
+    left = 0
+    right = 0
+    longest = 0
+    seen = {} #values index, count
+    for i, ch in enumerate(s): 
+      
+        if ch not in seen:
+            seen[ch] = np.array([i, 1])
+            right = i + 1
+        else: 
+            count = seen[ch][1]
+            print(count)
+            if count >= 2:
+                longest = max (longest, right - left)
+                left = max(left, seen[ch][0] + 1)
+            else:
+                seen[ch][1] += 1
+            right = i + 1
+
     
+    longest = max (longest, (right - left ))      
+    return longest
+"""
 
 
+Problem Statement:
+Given a string s and an integer k, find the length of the longest substring where every character appears at least k times.
 
+Examples:
 
+Input: s = "aaabb", k = 3
+Output: 3
+Explanation: The longest substring is "aaa", where 'a' repeats 3 times.
 
+Input: s = "ababbc", k = 2
+Output: 5
+Explanation: The longest substring is "ababb", where 'a' appears 2 times and 'b' appears 3 times.
+"""
+            
+def longest_distinct (s,k):
+    longest = 0
+    seen = {}
+    left = 0
+    right = 0
+    for ch in s:
+        seen.get(ch, 0) + 1
+        
+        
+
+    
 
 
 
