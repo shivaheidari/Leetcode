@@ -15,6 +15,10 @@ def eigenvalues(a):
  eigenvalue, eigenvector = np.linalg.eigh(a)
  return eigenvalue, eigenvector
 
+
+def l1Norm(a):
+   
+
 a = np.random.rand(3,3)
 b = np.random.rand(3,3)
 print(matrix_mul(a,b))

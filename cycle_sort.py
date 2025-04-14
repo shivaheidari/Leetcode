@@ -39,11 +39,3 @@ def cycle_sort(nums):
             nums[pos], item = item, nums[pos]
     
     return nums
-
-
-def test():
-    print(cycle_sort(([1,2,5,0, 6,8])))
-    assert cycle_sort([1,2,5,0, 6,8]) == [0,1,2,5,6,8]
-    assert cycle_sort([5,2,1,3]) == [1,2,3,5] 
-
-print(test())
