@@ -17,12 +17,16 @@ def longest(s,k):
     dist = {}
     longest = 0
     i = j = 0
-   
+    if k == 0:
+        return 0
+    unique_chrs = len(set(s))
+    if k >= unique_chrs:
+        return len(s)
     while j < len(s):
         chr = s[j]
         dist[chr] = dist.get(chr, 0) + 1
         j += 1
-        
+
         #shrink
         while len(dist) > k:
             left_chr = s[i]
