@@ -38,3 +38,29 @@ def longest(s,k):
     return longest
 
 print(longest("aaabcd", 2))
+
+
+"""
+Define i (left) and j (right) clearly.
+
+Decide if j is inclusive or exclusive.
+
+Shrink before expanding.
+
+Ensure the window is valid before growing.
+
+Update results inside the loop.
+
+Avoid missing the last valid window.
+
+Handle edge cases early (k=0, k ≥ unique chars).
+
+Use hash maps (dict/defaultdict) for frequency tracking.
+
+Decrement counts before deleting keys.
+
+Test with simple cases first ("aab", k=1).
+
+Helps catch off-by-one errors.
+
+"""
