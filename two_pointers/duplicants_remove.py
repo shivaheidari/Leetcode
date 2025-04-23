@@ -9,14 +9,14 @@ Output: 5 (because nums = [1,1,2,2,3,_...]; first 5 elements are valid).
 def InplaceRmv(nums):
     if not nums:
         return 0
-    i = 0  # Pointer to place the next valid element
-    count = 1  # Count of current element occurrences
+    i = 0  
+    count = 1 
     
     for j in range(1, len(nums)):
         if nums[j] == nums[j - 1]:
             count += 1
         else:
-            count = 1  # Reset for new element
+            count = 1 
         
         if count <= 2:
             nums[i] = nums[j]
@@ -25,5 +25,5 @@ def InplaceRmv(nums):
     return i
 
 # Test Cases
-print(InplaceRmv([1, 1, 1, 2, 2, 3]))         # Output: 5 (nums = [1, 1, 2, 2, 3, ...])
-print(InplaceRmv([1, 1, 1, 2, 2, 3, 3, 3]))   # Output: 6 (nums = [1, 1, 2, 2, 3, 3, ...])
+print(InplaceRmv([1, 1, 1, 2, 2, 3]))         
+print(InplaceRmv([1, 1, 1, 2, 2, 3, 3, 3])) 
