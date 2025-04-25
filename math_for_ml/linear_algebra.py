@@ -17,6 +17,7 @@ def eigenvalues(a):
 
 
 def l1Norm(a):
+   pass
    
 
 a = np.random.rand(3,3)
