@@ -28,4 +28,16 @@ def dailytemp(nums):
 
     return temps
 
+def daily_stack(nums):
+     stack = []
+     answers = [0] * len(nums)
+
+     for i in range(len(nums)):
+          while stack and nums[i] > nums[stack[-1]]:
+               j = stack.pop()
+               answers[j] = i - j
+          stack.append(i)
+     return answers
+ 
 print(dailytemp([73, 74, 75, 71, 69, 72, 76, 73]))
+print(daily_stack([73, 74, 75, 71, 69, 72, 76, 73]))
