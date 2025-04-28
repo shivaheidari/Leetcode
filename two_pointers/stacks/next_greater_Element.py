@@ -51,9 +51,4 @@ def opt_greater(nums):
 
 
 print(bf_greater([5,4,3,2,1]))
-"""
-bf = o(n^2)
-#optimization - stack
-
-
-"""
+print(opt_greater([5,4,3,2,1]))
