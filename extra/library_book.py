@@ -16,15 +16,16 @@ All operations should run in O(1) average time complexity (except update(), whic
 Assume timestamps are strictly increasing (like in real-time systems), but update() may still overwrite existing timestamps.
 
 """
+import heapq
 
-class StockTracker():
+class StockTracker_naive():
     def __init__(self):
         self.price = 0
         self.timestamp = 0
         self.track= {} 
         
 
-    def update(self, timestamp, price):
+    def update(self, timestamp, price): #
         self.timestamp = timestamp
         self.price = price
         self.track[timestamp] = price
@@ -42,13 +43,39 @@ class StockTracker():
         max_item = sorted_prices[-1][1]
         return max_item
 
+
+"""
+we should use heap for updata and search. why? it is more efficeint. 
+In the navie solution everything in best case is nlogn. By choosing heap as an efficient datastructure we can do the operations more efficient.
+
+"""
+class StockTracker():
+        def __init__(self):
+            self.prices = {}
+            self.min_heap = []
+            self.max_heap = []
+            
     
-    
-    
-    def minimum(self):
-        sorted_prices = sorted(self.track.items(), key= lambda item: item[1])
-        min_item = sorted_prices[0][1]
-        return min_item
+        def update(self, timestamp, price):
+             #overwrite and add to track
+             if timestamp in self.prices:
+                  old_price = self.prices[timestamp]
+
+
+             self.prices[timestamp] = price
+             heapq.heappush(self.min_heap, price)
+             heapq.heappush(self.max_heap, -price)
+
+        def current(self):
+             last_time = max(self.prices.keys())
+             return self.prices[last_time]
+        
+        def maximum(self):
+             
+             return self.max_heap[0]
+        
+        def minimum(self):
+             return self.min_heap[0]
 
 
 
