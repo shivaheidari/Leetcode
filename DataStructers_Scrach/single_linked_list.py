@@ -86,6 +86,12 @@ class SinglyLinkedList():
 
          if self.is_empty():
              return "error"
+         if self.head.data == data:
+             self.head = self.head.next
+             if self.head is Node:
+                 self.tail = None
+             self.size -= 1
+             return
          
          #general case
          prev = self.head
@@ -97,3 +103,27 @@ class SinglyLinkedList():
              self.size -= 1
              prev = node
              
+    def seearch(self, data):
+        for node in self:
+            if node.data == data:
+                return True
+        return False
+    
+
+    def reverse(self):
+        """"
+         def reverse(self):
+        """Reverse the list in place - O(n)"""
+        prev = None
+        current = self.head
+        self.tail = current  # New tail will be old head
+        
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        
+        self.head = prev  # New head is last non-None node
+        
+        """
