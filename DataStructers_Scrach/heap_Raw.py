@@ -24,7 +24,7 @@ class myheap:
     def _stif_up(self, i):
         parent = (i - 1) // 2
         if i > 0 and self.heap[i] < self.heap[parent]:
-            self.heap[i], self.heap[parent] = self.heap[parent], self.heap[index]
+            self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
             self._stif_up(parent)
        
 
