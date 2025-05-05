@@ -35,7 +35,7 @@ class SinglyLinkedList():
         nodes = [str(node) for node in self]
         return "->".join(nodes) + "->None"
 
-    
+
     
 
     def print_list(self):
@@ -82,4 +82,18 @@ class SinglyLinkedList():
 
         
     def delete(self, data):
-        pass
+         """Delete first occurrence of data """
+
+         if self.is_empty():
+             return "error"
+         
+         #general case
+         prev = self.head
+         for node in self:
+             if node.data == data:
+                 prev.next = node.next
+                 if node == self.tail:
+                     self.tail = prev
+             self.size -= 1
+             prev = node
+             
