@@ -1,5 +1,7 @@
 """
 head and tail?
+size?
+
 
 """
 
@@ -26,19 +28,15 @@ class SinglyLinkedList():
     def __iter__(self):
         current = self.head
         while current:
-            pass
-        
-    def traverse(self):
-        last_node = self.head
-        while last_node.next != None:
-            last_node = last_node.next
-        return last_node
+            yield current  # Pause and return current node
+            current = current.next
 
-        
-    def append(self, data):
-        new_node = Node(data)
-        insert_point = self.traverse()
-        insert_point.next = new_node
+    def __repr__(self):
+        nodes = [str(node) for node in self]
+        return "->".join(nodes) + "->None"
+
+    
+    
 
     def print_list(self):
         node = self.head
@@ -46,24 +44,42 @@ class SinglyLinkedList():
             print(node.data)
             node = node.next
         print(node.data)
-        
     
+    def is_empty(self):
+        return self.size == 0
+    def append(self, data):
+        new_node = Node(data)
+        if self.is_empty():
+            self.head = new_node
+        else:
+            self.tail.next = new_node
+        self.tail = new_node
+        self.size += 1
 
-# l = SinglyLinkedList()
-# l.append(1)
-# l.append(3)
-# l.append(5)
-# l.print_list()
+    def prepend(self, data):
+        #add the node at the beggining of the list
+        new_node = Node(data)
 
-def show_status():
-    print("Start")
-    yield
-    print("Middle")
-    yield
-    print("End")
-    yield
-status = show_status()
-next(status)
-next(status)
-next(status)
+        if self.is_empty():
+            
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+        self.head = new_node
+        self.size += 1
 
+    def insert_after(self, target_data, data):
+        new_node = Node(data)
+        for node in self:
+            if node.data == target_data:
+                new_node.next = node.next
+                node.next = new_node
+                if node == self.tail:
+                    self.tail = new_node
+                self.size += 1
+                return 
+        raise ValueError(f"Target data {target_data} not found in list")
+
+        
+    def delete(self, data):
+        pass
