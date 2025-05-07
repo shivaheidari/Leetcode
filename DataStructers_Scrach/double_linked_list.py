@@ -43,11 +43,15 @@ class Double_linked_list:
 
 
     def head_tail(self):
-        return self.head, self.tail  
+        return self.head, self.tail 
+     
     def search(self, data):
         #return true if data is in the list
+        for node in self:
+            if node.data == data:
+                return True
+        return False
 
-        pass
     def preappend(self, data):
         #insert at the begining
         node = Node(data)
