@@ -35,10 +35,13 @@ class Double_linked_list:
             self.head = self.tail = node
         else:
             self.tail.next = node
-            node.next = self.tail
+            node.prev = self.tail
+            node.next = None
             self.tail = node
 
         self.size += 1
+
+
     def head_tail(self):
         return self.head, self.tail  
     def search(self, data):
@@ -47,7 +50,12 @@ class Double_linked_list:
         pass
     def preappend(self, data):
         #insert at the begining
-        pass
+        node = Node(data)
+        self.head.prev = node
+        node.next = self.head
+        self.head = node
+
+        
     def reverse(self):
         pass
     
@@ -63,4 +71,5 @@ l = Double_linked_list()
 l.append(3)
 l.append(4)
 l.append(5)
-print(l.head_tail())
+l.preappend(1)
+print(l)
