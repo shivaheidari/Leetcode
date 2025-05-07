@@ -31,15 +31,19 @@ class Double_linked_list:
     def append(self, data):
         #insert at the end
         node = Node(data)
-        
         if self.size == 0:
             self.head = self.tail = node
         else:
             self.tail.next = node
+            node.next = self.tail
+            self.tail = node
+
         self.size += 1
-        
+    def head_tail(self):
+        return self.head, self.tail  
     def search(self, data):
         #return true if data is in the list
+
         pass
     def preappend(self, data):
         #insert at the begining
@@ -58,4 +62,5 @@ class Double_linked_list:
 l = Double_linked_list()
 l.append(3)
 l.append(4)
-print(l)
+l.append(5)
+print(l.head_tail())
