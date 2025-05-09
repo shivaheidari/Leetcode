@@ -134,25 +134,6 @@ class SinglyLinkedList():
 
             
 
-
-        
-        # """"
-        #  def reverse(self):
-        # """Reverse the list in place - O(n)"""
-        # prev = None
-        # current = self.head
-        # self.tail = current  # New tail will be old head
-        
-        # while current:
-        #     next_node = current.next
-        #     current.next = prev
-        #     prev = current
-        #     current = next_node
-        
-        # self.head = prev  # New head is last non-None node
-        
-        # """
-
 l = SinglyLinkedList()
 l.append(1)
 l.append(2)

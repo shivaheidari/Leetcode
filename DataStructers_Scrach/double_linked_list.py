@@ -61,19 +61,47 @@ class Double_linked_list:
 
         
     def reverse(self):
-        pass
-    
+        node = self.head
+        while node!= None:
+            target = node.next
+            node.next, node.prev = node.prev, node.next
+            node = target
+
+        self.head, self.tail = self.tail, self.head
    
     def is_empty(self):
-        pass
+        return self.size == 0
+    
     def insert_after(self, target_data, data):
         pass
+
     def delete(self,data):
-        pass
+        node = self.head
+        while node != None:
+            if node.data == data:
+                if node == self.head:
+                    node.next.prev = None
+                    self.head = node.next
+                    self.size -= 1
+                elif node == self.tail:
+                    node.prev.next = None
+                    self.tail = node.prev
+                    self.size -= 1
+
+                else:
+                    node.prev.next = node.next
+                    node.next.prev = node.prev
+                    self.size -= 1
+            node = node.next
 
 l = Double_linked_list()
 l.append(3)
 l.append(4)
 l.append(5)
-l.preappend(1)
+print(l)
+l.reverse()
+l.append(1)
+l.preappend(0)
+print(l)
+l.delete(1)
 print(l)
