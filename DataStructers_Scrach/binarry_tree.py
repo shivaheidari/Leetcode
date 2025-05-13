@@ -17,13 +17,14 @@ class btree:
         if self.root == None:
             self.root = new_node
             return
-        
+        print(type(new_node.val))
         while new_node.val <= node.val  & node.left != None:
             node = node.left_child
         
         if node.left == None:
             node.left = new_node
             new_node.parent = node
+
         while new_node.val > node.val and node.right!=None:
             node = node.right
         if node.right == None:
