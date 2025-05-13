@@ -11,11 +11,9 @@ class btree:
     
     def insert(self, val):
         new_node = Node(val)
-
         if self.root is None:
             self.root = new_node
             return
-
         node = self.root
 
         while True:
@@ -36,8 +34,17 @@ class btree:
     def delete(self):
         pass
 
-    def search(self):
-        pass
+    def search(self, data):
+        node = self.root
+        while node!= None:
+            if node.val == data:
+                return True
+            else:
+                if node.val >= data:
+                    node = node.left
+                else:
+                    node = node.right
+        return False
 
     def _bst(self):
         pass
@@ -71,5 +78,6 @@ l.insert(15)
 l.insert(16)
 l.insert
 l.print_tree()
+print(l.search(28))
 
 
