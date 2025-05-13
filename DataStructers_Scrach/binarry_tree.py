@@ -10,12 +10,13 @@ class btree:
         self.root = None
     
     def insert(self, val):
+
         new_node = Node(val)
         node = self.root
 
         if self.root == None:
             self.root = new_node
-            return 
+            return
         
         while new_node.val <= node.val  & node.left != None:
             node = node.left_child
@@ -42,6 +43,21 @@ class btree:
 
     def _bst(self):
         pass
+    
+    def print_tree(self):
+        self._travers(self.root)
 
-l = btree()
+    def _travers(self, node):
+            
+        if node != None:
+            print("val", node.val)
+            self._travers(node.left)
+            self._travers(node.right)
+            
+
+            
+l = btree() 
 l.insert(3)
+l.insert(4)
+l.print_tree()
+
