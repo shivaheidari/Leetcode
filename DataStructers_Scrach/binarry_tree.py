@@ -10,30 +10,28 @@ class btree:
         self.root = None
     
     def insert(self, val):
-
         new_node = Node(val)
-        node = self.root
-        if node == None:
+
+        if self.root is None:
             self.root = new_node
-            print("inserted", new_node.val)
             return
 
-        while node!=None:
-            if node.val >= new_node.val:
-                if node.left == None:
+        node = self.root
+
+        while True:
+            if val < node.val:
+                if node.left is None:
                     node.left = new_node
                     new_node.parent = node
                     return
-                else:
-                 node = node.left 
-            if node.val < new_node.val:
-                if node.right == None:
+                node = node.left
+            else:
+                if node.right is None:
                     node.right = new_node
                     new_node.parent = node
                     return
-                else:
-                    node = node.right
-            
+                node = node.right
+
 
     def delete(self):
         pass
