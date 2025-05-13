@@ -13,28 +13,27 @@ class btree:
 
         new_node = Node(val)
         node = self.root
-
-        if self.root == None:
+        if node == None:
             self.root = new_node
+            print("inserted", new_node.val)
             return
-        print(type(new_node.val))
-        while new_node.val <= node.val  & node.left != None:
-            node = node.left_child
-        
-        if node.left == None:
-            node.left = new_node
-            new_node.parent = node
 
-        while new_node.val > node.val and node.right!=None:
-            node = node.right
-        if node.right == None:
-            node.right = new_node
-            new_node.parent = node
-        
-
+        while node!=None:
+            if node.val >= new_node.val:
+                if node.left == None:
+                    node.left = new_node
+                    new_node.parent = node
+                    return
+                else:
+                 node = node.left 
+            if node.val < new_node.val:
+                if node.right == None:
+                    node.right = new_node
+                    new_node.parent = node
+                    return
+                else:
+                    node = node.right
             
-
-        
 
     def delete(self):
         pass
@@ -46,19 +45,33 @@ class btree:
         pass
     
     def print_tree(self):
-        self._travers(self.root)
+        self._travers_inorder(self.root)
 
-    def _travers(self, node):
+    def _travers_inorder(self, node):
             
         if node != None:
-            print("val", node.val)
-            self._travers(node.left)
-            self._travers(node.right)
+            
+            self._travers_inorder(node.left)
+            print(node.val)
+            self._travers_inorder(node.right)
+        return
             
 
-            
+    def _travers_postorder(self, node):      
+        pass
+    def _travers_preorder(self, node):
+        pass
+    def _travers_levelorder(self, node):
+        pass
 l = btree() 
+l.insert(10)
+l.insert(5)
 l.insert(3)
-l.insert(4)
+l.insert(7)
+l.insert(20)
+l.insert(15)
+l.insert(16)
+l.insert
 l.print_tree()
+
 
