@@ -50,7 +50,7 @@ class btree:
         pass
     
     def print_tree(self):
-        self._travers_inorder(self.root)
+        self._travers_preorder(self.root)
 
     def _travers_inorder(self, node):
             
@@ -62,9 +62,17 @@ class btree:
         return
             
 
-    def _travers_postorder(self, node):      
-        pass
     def _travers_preorder(self, node):
+        if node!= None:
+            print(node.val)
+            print("/")
+            self._travers_preorder(node.left)
+            print("\\")
+            self._travers_preorder(node.right)
+
+        
+    def _travers_postorder(self, node):   
+    
         pass
     def _travers_levelorder(self, node):
         pass
