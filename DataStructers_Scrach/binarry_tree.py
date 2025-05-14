@@ -30,11 +30,31 @@ class btree:
                     return
                 node = node.right
 
-
+    def _isleaf(self, node):
+        if node.left == None and node.right == None:
+            return True
+        return False
+    
     def delete(self, data):
 
-        
         #leaf
+        node = self.root
+        print(node.val)
+        while node != None:
+            if node.val == data:
+                if self._isleaf(node):
+                    parent = node.parent
+                    if parent.left == node:
+                        parent.left = None
+                    else:
+                        parent.righ = None
+            elif node.val < data:
+                node = node.right
+            else:
+                node = node.left
+                    
+
+
         
         #non leaf ->has a left or right child
 
@@ -92,5 +112,7 @@ l.insert(16)
 l.insert
 l.print_tree()
 print(l.search(28))
+l.delete(16)
+l.print_tree()
 
 
