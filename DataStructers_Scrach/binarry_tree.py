@@ -37,21 +37,26 @@ class btree:
     
     def delete(self, data):
 
-        #leaf
         node = self.root
-        print(node.val)
         while node != None:
+            print(node.val)
             if node.val == data:
                 if self._isleaf(node):
                     parent = node.parent
+                    
                     if parent.left == node:
                         parent.left = None
+                       
                     else:
-                        parent.righ = None
+                        parent.right = None
+                        
+                return
             elif node.val < data:
                 node = node.right
             else:
                 node = node.left
+        return 
+        
                     
 
 
@@ -90,9 +95,9 @@ class btree:
     def _travers_preorder(self, node):
         if node!= None:
             print(node.val)
-            print("/")
+            
             self._travers_preorder(node.left)
-            print("\\")
+            
             self._travers_preorder(node.right)
 
         
@@ -114,5 +119,6 @@ l.print_tree()
 print(l.search(28))
 l.delete(16)
 l.print_tree()
+print(l.search(16))
 
 
