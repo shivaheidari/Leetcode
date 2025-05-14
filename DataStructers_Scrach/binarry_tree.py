@@ -31,9 +31,14 @@ class btree:
                 node = node.right
 
 
-    def delete(self):
-        pass
+    def delete(self, data):
 
+        
+        #leaf
+        
+        #non leaf ->has a left or right child
+
+        #after delete substitute with one child and the parent of the child is gradfather
     def search(self, data):
         node = self.root
         while node!= None:
