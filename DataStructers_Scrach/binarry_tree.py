@@ -39,9 +39,8 @@ class btree:
 
         node = self.root
         while node != None:
-            print(node.val)
             if node.val == data:
-                if self._isleaf(node):
+                if self._isleaf(node): #leaf
                     parent = node.parent
                     
                     if parent.left == node:
@@ -49,13 +48,27 @@ class btree:
                        
                     else:
                         parent.right = None
-                        
-                return
+                    return
+                else:#not leaf
+                    
+                    #one child
+                    if node.left!=None or node.right!=None:
+                        parent = node.parent
+                        child = node.left if node.left!=None else node.right
+                        if parent.left == node:
+                            parent.left = child
+                        else:
+                            parent.right = child
+                        child.parent = parent
+                    return
+
+                    #two children
+                
             elif node.val < data:
                 node = node.right
             else:
                 node = node.left
-        return 
+    
         
                     
 
@@ -116,9 +129,8 @@ l.insert(15)
 l.insert(16)
 l.insert
 l.print_tree()
-print(l.search(28))
-l.delete(16)
+l.delete(15)
 l.print_tree()
-print(l.search(16))
+print(l.search(15))
 
 
